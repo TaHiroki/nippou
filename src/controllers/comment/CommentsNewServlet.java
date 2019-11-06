@@ -34,8 +34,10 @@ public class CommentsNewServlet extends HttpServlet {
         request.setAttribute("_token", request.getSession().getId());
 
         Comment c = new Comment();
-        c.setReport_date(new Date(System.currentTimeMillis()));
+        c.setComment_date(new Date(System.currentTimeMillis()));
         request.setAttribute("comment", c);
+        Date time = new Date(System.currentTimeMillis());
+        request.setAttribute("time", time);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/comments/new.jsp");
         rd.forward(request, response);

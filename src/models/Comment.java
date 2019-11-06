@@ -45,8 +45,8 @@ public class Comment {
    @Column(name = "title", length = 255, nullable = false)
    private String title;
 
-   @Column(name = "report_date", nullable = false)
-   private Date report_date;
+   @Column(name = "comment_date", nullable = false)
+   private Date comment_date;
 
    @Lob
    @Column(name = "comment", nullable = false)
@@ -90,12 +90,12 @@ public class Comment {
        this.title = title;
    }
 
-   public Date getReport_date() {
-       return report_date;
+   public Date getComment_date() {
+       return comment_date;
    }
 
-   public void setReport_date(Date report_date) {
-       this.report_date = report_date;
+   public void setComment_date(Date comment_date) {
+       this.comment_date = comment_date;
    }
 
    public String getComment() {

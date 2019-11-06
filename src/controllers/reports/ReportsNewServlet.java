@@ -36,6 +36,8 @@ public class ReportsNewServlet extends HttpServlet {
         Report r = new Report();
         r.setReport_date(new Date(System.currentTimeMillis()));
         request.setAttribute("report", r);
+        Date time = new Date(System.currentTimeMillis());
+        request.setAttribute("time", time);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/new.jsp");
         rd.forward(request, response);
