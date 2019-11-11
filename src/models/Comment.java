@@ -20,12 +20,16 @@ import javax.persistence.Table;
 @Table(name = "comments")
 @NamedQueries({
    @NamedQuery(
-           name = "getAllComments",
-           query = "SELECT c FROM Comment As c ORDER BY c.id DESC"
+           name = "getComments",
+           query = "SELECT c FROM Comment AS c WHERE c.report = :report ORDER BY c.id DESC"
            ),
    @NamedQuery(
            name = "getCommentsCount",
-           query = "SELECT COUNT(c) FROM Comment AS c"
+           query = "SELECT COUNT(c) FROM Comment AS c WHERE c.report = :report"
+           ),
+   @NamedQuery(
+           name = "getAllComments",
+           query = "SELECT c FROM Comment AS c ORDER BY c.id DESC"
            ),
 })
 @Entity
@@ -53,7 +57,7 @@ public class Comment {
    private String comment;
 
    @Column(name = "created_at", nullable = false)
-   private Timestamp creater_at;
+   private Timestamp created_at;
 
    @Column(name ="updated_at", nullable = false)
    private Timestamp updated_at;
@@ -75,12 +79,12 @@ public class Comment {
    }
 
    public String getName() {
-       return name;
-   }
+    return name;
+}
 
    public void setName(String name) {
-       this.name = name;
-   }
+    this.name = name;
+}
 
    public String getTitle() {
        return title;
@@ -106,12 +110,12 @@ public class Comment {
        this.comment = comment;
    }
 
-   public Timestamp getCreater_at() {
-       return creater_at;
+   public Timestamp getCreated_at() {
+       return created_at;
    }
 
-   public void setCreater_at(Timestamp creater_at) {
-       this.creater_at = creater_at;
+   public void setCreated_at(Timestamp creater_at) {
+       this.created_at = creater_at;
    }
 
    public Timestamp getUpdated_at() {

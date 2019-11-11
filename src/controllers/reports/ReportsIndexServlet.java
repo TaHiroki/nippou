@@ -54,6 +54,7 @@ public class ReportsIndexServlet extends HttpServlet {
         request.setAttribute("reports", reports);
         request.setAttribute("reports_count", reports_count);
         request.setAttribute("page", page);
+        request.getSession().removeAttribute("login_report");
         if(request.getSession().getAttribute("flush") != null){
             request.setAttribute("flush", request.getSession().getAttribute("fush"));
             request.getSession().removeAttribute("flush");

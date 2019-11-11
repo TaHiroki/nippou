@@ -36,7 +36,43 @@
                             </td>
                         </tr>
                     </tbody>
+                </table><br /><br/>
+
+
+                <h2>コメント　一覧</h2>
+                <table id="comment_list">
+                    <tbody>
+                        <tr>
+                            <th class="comment_name">氏名</th>
+                            <th class="comment_date">日付</th>
+                            <th class="comment_tatile">タイトル</th>
+                            <th class="comment_action">操作</th>
+                        </tr>
+                        <c:forEach var="comment" items="${comments }" varStatus="status">
+                            <tr class="row${status.count % 2 }">
+                                <td class="comment_name"><c:out value="${comment.name}" /></td>
+                                <td class="comment_data"><fmt:formatDate value='${comment_data }' pattern='yyy-MM-dd'/></td>
+                                <td class="comment_tatile">${comment.title }</td>
+                                <td class="comment_action"><a href="<c:url value='/comments/show?id=${comment.id }' />">詳細を見る</a></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
                 </table>
+
+                <div id="pagination">
+                    （全 ${comments_count } 件） <br />
+                    <c:forEach var="i" begin="1" end="${((comments_count - 1 ) / 15 ) + 1 }" step="1">
+                        <c:choose>
+                            <c:when test="${i == page }">
+                                <c:out value="${i }" />&nbsp;
+                            </c:when>
+                            <c:otherwise>
+                                <a href="<c:url value='/reports/show?page=${i }' />"><c:out value="${i }" /></a>&nbsp;
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </div>
+
 
                 <c:if test="${sessionScope.login_employee.id == report.employee.id }">
                     <p><a href="<c:url value='/reports/edit?id=${report.id}' />">この日報を編集する</a></p>
