@@ -51,7 +51,7 @@
                         <c:forEach var="comment" items="${comments }" varStatus="status">
                             <tr class="row${status.count % 2 }">
                                 <td class="comment_name"><c:out value="${comment.name}" /></td>
-                                <td class="comment_data"><fmt:formatDate value='${comment_data }' pattern='yyy-MM-dd'/></td>
+                                <td class="comment_data"><fmt:formatDate value='${comment.comment_date }' pattern='yyy-MM-dd'/></td>
                                 <td class="comment_tatile">${comment.title }</td>
                                 <td class="comment_action"><a href="<c:url value='/comments/show?id=${comment.id }' />">詳細を見る</a></td>
                             </tr>

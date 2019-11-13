@@ -34,9 +34,15 @@ public class ReportsShowServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if(request.getParameter("id") != null){
+        request.getSession().setAttribute("id", Integer.parseInt(request.getParameter("id")));
+        }
+
         EntityManager em = DBUtil.createEntityManager();
 
-        Report r = em.find(Report.class, Integer.parseInt(request.getParameter("id")));
+        Report r = em.find(Report.class, request.getSession().getAttribute("id"));
+
+
 
         int page;
         try{
