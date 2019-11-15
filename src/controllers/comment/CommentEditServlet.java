@@ -44,6 +44,7 @@ public class CommentEditServlet extends HttpServlet {
             request.setAttribute("comment", c);
             request.setAttribute("_token", request.getSession().getId());
             request.setAttribute("time", c.getComment_date());
+            request.getSession().setAttribute("comment_id", c.getId());
         }
 
 
