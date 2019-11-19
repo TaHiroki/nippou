@@ -1,6 +1,7 @@
 package controllers.comment;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
@@ -45,6 +46,11 @@ public class CommentEditServlet extends HttpServlet {
             request.setAttribute("_token", request.getSession().getId());
             request.setAttribute("time", c.getComment_date());
             request.getSession().setAttribute("comment_id", c.getId());
+
+            Date time = new Date(System.currentTimeMillis());
+            request.setAttribute("time", time);
+            request.setAttribute("title", c.getTitle());
+            request.setAttribute("content", c.getComment());
         }
 
 

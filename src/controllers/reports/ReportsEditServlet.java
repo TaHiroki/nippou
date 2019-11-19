@@ -1,6 +1,7 @@
 package controllers.reports;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
@@ -45,6 +46,11 @@ public class ReportsEditServlet extends HttpServlet {
            request.setAttribute("report", r);
            request.setAttribute("_token", request.getSession().getId());
            request.getSession().setAttribute("report_id", r.getId());
+
+           Date time = new Date(System.currentTimeMillis());
+           request.setAttribute("time", time);
+           request.setAttribute("title", r.getTitle());
+           request.setAttribute("content", r.getContent());
        }
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/edit.jsp");

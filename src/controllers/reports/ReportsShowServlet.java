@@ -50,7 +50,8 @@ public class ReportsShowServlet extends HttpServlet {
         }catch(Exception e){
             page = 1;
         }
-        List<Comment> comments = em.createNamedQuery("getAllComments", Comment.class)
+        List<Comment> comments = em.createNamedQuery("getComments", Comment.class)
+                                    .setParameter("report", r)
                                     .setFirstResult(15 * (page -1))
                                     .setMaxResults(15)
                                     .getResultList();

@@ -27,10 +27,6 @@ import javax.persistence.Table;
            name = "getCommentsCount",
            query = "SELECT COUNT(c) FROM Comment AS c WHERE c.report = :report"
            ),
-   @NamedQuery(
-           name = "getAllComments",
-           query = "SELECT c FROM Comment AS c ORDER BY c.id DESC"
-           ),
 })
 @Entity
 public class Comment {

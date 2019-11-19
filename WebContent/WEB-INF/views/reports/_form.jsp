@@ -20,11 +20,11 @@
 <br /><br />
 
 <label for="title">タイトル</label><br />
-<input type="text" name="title" value="${report.title }" />
+<input type="text" name="title" value="${title }" />
 <br /><br />
 
 <label for="content">内容</label><br />
-<textarea name="content" rows="10" cols="50">${report.content }</textarea>
+<textarea name="content" rows="10" cols="50">${content }</textarea>
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />

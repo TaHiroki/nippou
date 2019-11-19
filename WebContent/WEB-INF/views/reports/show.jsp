@@ -20,7 +20,7 @@
                         <tr>
                             <th>内容</th>
                             <td>
-                                <pre><c:out value="${report.content}" /></pre>
+                                <pre ><c:out value="${report.content}" /></pre>
                             </td>
                         </tr>
                         <tr>
@@ -36,7 +36,11 @@
                             </td>
                         </tr>
                     </tbody>
-                </table><br /><br/>
+                </table><br />
+
+                <c:if test="${sessionScope.login_employee.id == report.employee.id }">
+                    <p><a href="<c:url value='/reports/edit?id=${report.id}' />">この日報を編集する</a></p>
+                </c:if><br /><br />
 
 
                 <h2>コメント　一覧</h2>
@@ -73,10 +77,6 @@
                     </c:forEach>
                 </div>
 
-
-                <c:if test="${sessionScope.login_employee.id == report.employee.id }">
-                    <p><a href="<c:url value='/reports/edit?id=${report.id}' />">この日報を編集する</a></p>
-                </c:if>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>

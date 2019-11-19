@@ -72,6 +72,8 @@ public class CommentCreateServlet extends HttpServlet {
                 request.setAttribute("_token", request.getSession().getId());
                 request.setAttribute("comment", c);
                 request.setAttribute("errors", errors);
+                Date time = new Date(System.currentTimeMillis());
+                request.setAttribute("time", time);
 
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/comments/new.jsp");
                 rd.forward(request, response);
